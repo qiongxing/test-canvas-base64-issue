@@ -1,0 +1,1 @@
+# test-canvas-base64-issue
