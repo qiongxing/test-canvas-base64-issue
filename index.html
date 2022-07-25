@@ -20,6 +20,7 @@
         function watermarking(file, date, callback) {
             const img = new Image();
             img.src = file;
+            //get a blank image issue
             img.onload = function () {
                 const canvas = document.querySelector("canvas");
                 const ctx = canvas.getContext("2d");
@@ -32,9 +33,21 @@
                 ctx.drawImage(img, 0, 0, width, height);
                 const newBase64 = canvas.toDataURL("image/jpeg");
                 callback(newBase64);
-
-
             };
+            //solution
+            // img.decode(() => {
+            //     const canvas = document.querySelector("canvas");
+            //     const ctx = canvas.getContext("2d");
+
+            //     let width = img.width;
+            //     let height = img.height;
+            //     canvas.width = width;
+            //     canvas.height = height;
+
+            //     ctx.drawImage(img, 0, 0, width, height);
+            //     const newBase64 = canvas.toDataURL("image/jpeg");
+            //     callback(newBase64);
+            // })
 
             img.onerror = (e) => {
                 console.log(e);
